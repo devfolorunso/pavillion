@@ -12,13 +12,13 @@
 			</q-card-section>
 
 			<div class="col-12 text-center self-center q-mt-lg">
-				<q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+				<q-form @submit="onSubmit" class="q-gutter-md">
 					<!-- Email -->
 					<q-input
 						filled
-						v-model="email"
-						input-class="text-right "
-						label-slot
+						v-model="formObject.email"
+						input-class="text-left "
+						label="example@pavillion.com"
 						clearable
 						hint="Email Address"
 						lazy-rules
@@ -27,35 +27,25 @@
 								(val && val.length > 0) || 'Please enter your email address',
 						]"
 					>
-						<template v-slot:label>
-							<div class="row items-center all-pointer-events">
-								<q-icon
-									class="q-mr-xs"
-									color="steel-blue"
-									size="24px"
-									name="mail"
-								/>
-								Email Address
-
-								<q-tooltip
-									class="bg-grey-8"
-									anchor="top left"
-									self="bottom left"
-									:offset="[0, 8]"
-									>Email address</q-tooltip
-								>
-							</div>
+						<template v-slot:prepend>
+							<q-icon
+								class="q-mr-xs"
+								color="steel-blue"
+								size="24px"
+								name="mail"
+							/>
 						</template>
 					</q-input>
 					<!-- Password -->
 					<q-space />
 
 					<q-input
-						v-model="password"
+						v-model="formObject.password"
 						filled
 						:type="isPwd ? 'password' : 'text'"
 						hint="Password"
 						lazy-rules
+						label="******"
 						:rules="[
 							(val) => (val && val.length > 0) || 'Please enter your password',
 						]"
@@ -72,6 +62,7 @@
 					<div>
 						<q-btn
 							size="15px"
+							type="submit"
 							unelevated
 							padding="10px 20px"
 							rounded
@@ -88,34 +79,61 @@
 <script lang="ts">
 import { ref, defineComponent } from "vue";
 import { useQuasar } from "quasar";
+import { useAppState } from "../stores/appState";
+
 export default defineComponent({
-	name: "Home",
+	name: "Login",
 	setup() {
-		const email = ref(null);
-		const password = ref("");
+		//Get the Quasar Framework instance
+		const appState = useAppState();
+		appState.clearErrors();
+
+		//Create form Object
+		let formObject = ref({
+			email: "",
+			password: "",
+		});
+
 		let isPwd = ref(true);
 		const submitting = ref(false);
 		const $q = useQuasar();
 
 		return {
-			email,
-			password,
+			formObject,
 			isPwd,
 			submitting,
 
 			onSubmit() {
 				submitting.value = true;
-				$q.notify({
-					color: "red-5",
-					textColor: "white",
-					icon: "warning",
-					message: "Form submitted",
-				});
-			},
-
-			onReset() {
-				email.value = null;
-				password.value = "";
+				appState.login(formObject.value);
+				if (Object.keys(appState.userData).length > 0) {
+					submitting.value = false;
+					$q.notify({
+						message: "Success",
+						color: "positive",
+						position: "top",
+						timeout: 2000,
+					});
+				} else {
+					if (Object.keys(appState.backEndErrors).length > 0) {
+						submitting.value = false;
+						$q.notify({
+							message: "Invalid email or password",
+							color: "warn",
+							position: "top",
+							timeout: 2000,
+						});
+					} else {
+						submitting.value = false;
+						$q.notify({
+							message: "Something went wrong! Please try again later",
+							color: "negative",
+							position: "top",
+							timeout: 2000,
+						});
+						return;
+					}
+				}
 			},
 		};
 	},

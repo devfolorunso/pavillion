@@ -18,6 +18,7 @@
         "src/**/*.ts",
         "src/**/*.d.ts",
         "src/**/*.tsx",
-        "src/**/*.vue"
-, "src/main.js",  "src/env.d.ts"    ]
+        "src/**/*.vue",
+        "index.d.ts"
+    ],
 }

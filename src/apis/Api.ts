@@ -1,7 +1,6 @@
 import axios from 'axios'
 import NProgress from 'nprogress'
-
-let Api = axios.create({baseURL: process.env.VUE_APP_ROOT_API})
+let Api = axios.create({baseURL:"http://pavilioncms-dev.herokuapp.com/api/v1"})
 
 /* -----------------------  Add a request interceptor ---------------------- */
 Api.interceptors.request.use(

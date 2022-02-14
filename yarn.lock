@@ -49,6 +49,21 @@
   "resolved" "https://registry.npmjs.org/@quasar/vite-plugin/-/vite-plugin-1.0.4.tgz"
   "version" "1.0.4"
 
+"@space-css/space-css@^1.0.3":
+  "integrity" "sha512-Z52uFnUEe/Sy7S6Upnwtb8jV82svQsFuR2ZSIfLouz0AVLBsZFK66H6uQnVjs6lhM8L7gPDACgicqWSDfYUGSg=="
+  "resolved" "https://registry.npmjs.org/@space-css/space-css/-/space-css-1.0.3.tgz"
+  "version" "1.0.3"
+
+"@types/node@^17.0.17":
+  "integrity" "sha512-e8PUNQy1HgJGV3iU/Bp2+D/DXh3PYeyli8LgIwsQcs1Ar1LoaWHSIT6Rw+H2rNJmiq6SNWiDytfx8+gYj7wDHw=="
+  "resolved" "https://registry.npmjs.org/@types/node/-/node-17.0.17.tgz"
+  "version" "17.0.17"
+
+"@types/nprogress@^0.2.0":
+  "integrity" "sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A=="
+  "resolved" "https://registry.npmjs.org/@types/nprogress/-/nprogress-0.2.0.tgz"
+  "version" "0.2.0"
+
 "@vitejs/plugin-vue@^2.0.0":
   "integrity" "sha512-wtdMnGVvys9K8tg+DxowU1ytTrdVveXr3LzdhaKakysgGXyrsfaeds2cDywtvujEASjWOwWL/OgWM+qoeM8Plg=="
   "resolved" "https://registry.npmjs.org/@vitejs/plugin-vue/-/plugin-vue-2.0.1.tgz"

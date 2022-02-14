@@ -13,10 +13,13 @@
     "pinia": "^2.0.9",
     "quasar": "^2.4.10",
     "vue": "^3.2.25",
-    "vue-router": "4"
+    "vue-router": "4",
+    "@space-css/space-css": "^1.0.3"
   },
   "devDependencies": {
     "@quasar/vite-plugin": "^1.0.4",
+    "@types/node": "^17.0.17",
+    "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "^2.0.0",
     "sass": "1.32.0",
     "typescript": "^4.4.4",
